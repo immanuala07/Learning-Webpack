@@ -1,2 +1,7 @@
 # Learning-Webpack
-Learning Webpack - Step by Step
+
+<details>
+<summary>Learning Webpack - Step by Step</summary>
+</details>
+
+#### Useful links:
