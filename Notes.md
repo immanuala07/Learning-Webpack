@@ -72,3 +72,38 @@ module.exports = {
     filename: 'images/[hash][ext][query]'
   }
 }
+```
+
+# HTTP Requests with `asset/resource` in Webpack
+
+When you use the `asset/resource` module type in Webpack:
+
+- **Webpack emits each asset as a separate file** in your output directory (e.g., `dist/`).
+- Your bundled JavaScript will reference these assets by their **URL paths**.
+- At runtime, the browser makes **separate HTTP requests** to load each of these asset files.
+
+---
+
+## What this means for HTTP requests:
+
+- Each imported asset (images, fonts, etc.) results in an **individual HTTP request** from the browser.
+- This is similar to how static assets are traditionally loaded in web apps.
+- It can increase the number of HTTP requests, which might impact performance if there are many small files.
+
+---
+
+## When is this beneficial?
+
+- For larger files where inlining (like `asset/inline`) would cause bundle size to balloon.
+- When caching of assets is important — browsers can cache individual files separately.
+- When you serve assets through a CDN or a dedicated static file server.
+
+---
+
+## Optimization tips
+
+- Use Webpack's `asset` module type to automatically inline small files and emit large ones separately.
+- Combine with techniques like HTTP/2 or HTTP/3 which better handle multiple parallel requests.
+- Use cache-busting file names (Webpack does this by default with hashes) to leverage browser caching.
+
+---
