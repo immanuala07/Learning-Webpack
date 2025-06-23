@@ -1,4 +1,5 @@
 const path = require('path');
+const { Parser } = require('webpack');
 
 module.exports = {
     entry: './src/index.js',
@@ -10,15 +11,24 @@ module.exports = {
         publicPath: 'dist/'
     },
     mode: 'none',
-    module:{
+    module: {
         rules: [
             {
-                test: /\.(jpg|png)$/,
-                type: 'asset/resource'
-            },{
-                test: /\.svg$/i,
-                type: 'asset/inline'
-            }
+                test: /\.(jpg|png|svg)$/,
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 3 * 1024
+                    }
+                }
+            },
+            // {
+            //     test: /\.(jpg|png)$/,
+            //     type: 'asset/resource'
+            // },{
+            //     test: /\.svg$/i,
+            //     type: 'asset/inline'
+            // }
         ]
     }
 };
