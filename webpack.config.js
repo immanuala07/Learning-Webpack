@@ -21,7 +21,17 @@ module.exports = {
                         maxSize: 3 * 1024
                     }
                 }
-            },
+            }, {
+                test: /\.css$/,
+                /*
+                css-loader - Allows Webpack to understand @import and url() in CSS files.
+                It resolves paths and dependencies in CSS files and doesn't inject CSS into the DOM.
+
+                style-loader - Injects CSS into the DOM by adding a <style> tag.
+                It takes the output from css-loader and adds it to the page at runtime.
+                */
+                use: ['style-loader', 'css-loader'] 
+            }
             // {
             //     test: /\.(jpg|png)$/,
             //     type: 'asset/resource'
