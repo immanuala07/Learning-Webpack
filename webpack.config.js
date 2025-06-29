@@ -30,7 +30,7 @@ module.exports = {
                 style-loader - Injects CSS into the DOM by adding a <style> tag.
                 It takes the output from css-loader and adds it to the page at runtime.
                 */
-                use: ['style-loader', 'css-loader'] 
+                use: ['style-loader', 'css-loader']
             }, {
                 test: /\.scss$/,
                 /*
@@ -48,7 +48,17 @@ module.exports = {
                 style-loader - Injects CSS into the DOM by adding a <style> tag.
                 It takes the output from css-loader and adds it to the page at runtime.
                 */
-                use: ['style-loader', 'css-loader', 'sass-loader'] 
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            }, {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/env'], // Supports all versions of EcmaScripts
+                        plugins: ['@babel/plugin-proposal-class-properties'] // Add the plugin based on the feature which doesnt supported by webpack
+                    }
+                }
             }
             // {
             //     test: /\.(jpg|png)$/,
