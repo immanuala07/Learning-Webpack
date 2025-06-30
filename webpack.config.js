@@ -56,7 +56,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/env'], // Supports all versions of EcmaScripts
-                        plugins: ['@babel/plugin-proposal-class-properties'] // Add the plugin based on the feature which doesnt supported by webpack
+                        plugins: ['@babel/plugin-proposal-class-properties',["@babel/plugin-proposal-pipeline-operator", { proposal: "minimal" }]], // Add the plugin based on the feature which doesnt supported by webpack
                     }
                 }
             }

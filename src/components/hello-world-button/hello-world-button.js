@@ -7,6 +7,14 @@ class HelloWorldButton {
         button.innerHTML = 'Hello world';
         const body = document.querySelector('body');
         button.onclick = function () {
+            const double = x => x * 2;
+            const square = x => x * x;
+            const increment = x => x + 1;
+            // const result = 3
+            //     |> increment
+            //     |> double
+            //     |> square;
+            // console.log("Pipeline Operator value : ", result);
             const p = document.createElement('p');
             p.innerHTML = 'Hello world';
             p.classList.add('hello-world-text');
