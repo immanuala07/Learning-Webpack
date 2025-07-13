@@ -1,5 +1,5 @@
 const path = require('path');
-const { Parser } = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -56,7 +56,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/env'], // Supports all versions of EcmaScripts
-                        plugins: ['@babel/plugin-proposal-class-properties',["@babel/plugin-proposal-pipeline-operator", { proposal: "minimal" }]], // Add the plugin based on the feature which doesnt supported by webpack
+                        plugins: ['@babel/plugin-proposal-class-properties', ["@babel/plugin-proposal-pipeline-operator", { proposal: "minimal" }]], // Add the plugin based on the feature which doesnt supported by webpack
                     }
                 }
             }
@@ -68,5 +68,8 @@ module.exports = {
             //     type: 'asset/inline'
             // }
         ]
-    }
+    },
+    plugins: [
+        new TerserPlugin()
+    ]
 };
