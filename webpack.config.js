@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'bundle.js',
+        filename: 'bundle.[contenthash].js',
         path: path.resolve(__dirname, './dist'),
         // publicPath in Webpack defines the base URL for all assets in your project. It tells Webpack where to serve or load assets from.
         // It's important when deploying to different environments (local, CDN, subfolder).
@@ -73,7 +73,7 @@ module.exports = {
     plugins: [
         new TerserPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'styles.css' // This will create a separate CSS file instead of injecting styles into the DOM
+            filename: 'styles.[contenthash].css' // This will create a separate CSS file instead of injecting styles into the DOM
         })
     ]
 };
